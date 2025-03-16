@@ -79,7 +79,6 @@
   programs = {
     git.enable = true;
     zsh.enable = true;
-    firefox.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -137,26 +136,31 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
   home-manager.users.ben = { pkgs, ... }: {
-    home.packages = [ 
-      pkgs.atool 
-      pkgs.httpie 
-    ];
-    
-    programs.git = {
-      enable = true;
-      userName = "Benouze4Maurice";
-      userEmail = "benoit.vallegra@hotmail.fr";
-    };
+    nixpkgs.config.allowUnfree = true;
 
-    programs.ssh = {
-      enable = true;
-      addKeysToAgent = "yes";
-      matchBlocks = {
-        "github.com" = {
-          identitiesOnly = true;
-          identityFile = [
-            "/home/ben/.ssh/id_ed25519"
-          ];
+    home.packages = [ 
+      pkgs.obsidian
+    ];
+
+    programs = {
+      firefox.enable = true;
+
+      git = {
+        enable = true;
+        userName = "Benouze4Maurice";
+        userEmail = "benoit.vallegra@hotmail.fr";
+      };
+
+      ssh = {
+        enable = true;
+        addKeysToAgent = "yes";
+        matchBlocks = {
+          "github.com" = {
+            identitiesOnly = true;
+            identityFile = [
+              "/home/ben/.ssh/id_ed25519"
+            ];
+          };
         };
       };
     };
