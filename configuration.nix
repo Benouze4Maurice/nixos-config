@@ -155,7 +155,7 @@
         "github.com" = {
           identitiesOnly = true;
           identityFile = [
-            ".ssh/id_ed25519"
+            "/home/ben/.ssh/id_ed25519"
           ];
         };
       };
